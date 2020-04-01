@@ -1,20 +1,23 @@
 // Business Logic //
 var translate = function(str) {
-  str = str.toLowerCase().split("");
-  if (["a", "e", "i", "o", "u"].indexOf(str[0]) > -1) {
-    return str = str + "way";
-  } // else {
-  //   for (var i=0; i<str.length; i++) {
-  //     if (["a", "e", "i", "o", "u"].indexOf(str[i]) > -1) {
-  //       var firstcons = str.slice(0, i);
-  //       var middle = str.slice(i,str.length);
-  //       str = middle+firstcons+"ay";
-  //       break;
-  //     }
-  //     return str;
-  //   }
-};
+  str = str.toLowerCase();
+  var sentenceArray = str.split(" ");
+  outputArray = sentenceArray.map(function(word) {
+  if (["a", "e", "i", "o", "u"].indexOf(word[0]) > -1) {
+    return word+"way";
+    } else {
+      return word;
+    }
+  });
+  return outputArray.join(" ");
+}
+  // oy oy oy = oyway oyway oyway
     
+//For words beginning with a vowel, add "way" to the end.
+// eap = eapway
+
+// inputNew = inputNew.join("way");
+
 
 // var inputNew = str.split("");
 
@@ -24,14 +27,12 @@ var translate = function(str) {
 $(document).ready(function() {
   $("form#pigLatin").submit(function(event) {
     event.preventDefault();
-    var str = $("input#str").val();
-    // var inputNew = str.split("");
-
     
+    var str = $("input#str").val();
     var result = translate(str);
     if (result) {
     $(".return").text(result);
     }
-    // console.log(result);
+    console.log(result)
   });
 });
