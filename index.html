@@ -17,7 +17,7 @@
       <form id="pigLatin">
         <div class="form-group">
           <label for="word">Enter any word or phrase and see it in pig latin!</label>
-          <input type="text" id="word">
+          <input pattern="[a-zA-Z]+" oninvalid="setCustomValidity('No numbers, please.')" type="text" id="str">
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Indfay Outway!</button>
