@@ -1,17 +1,21 @@
+// Business Logic //
+var translate = function(str) {
+  str = str.toLowerCase();
+  if (["a", "e", "i", "o", "u"].indexOf(str[0]) > -1) {
+    return str = str + "way";
+  }
+};
+    
 
-  var str = $("input#str").val();
-  console.log(str);
-  
-
+// User Interface Logic //
 $(document).ready(function() {
   $("form#pigLatin").submit(function(event) {
     event.preventDefault();
-    if(("input#str").val(letterNumber)) {
-      console.log(letterNumber);
-      return true;
-    } else {
-  alert("not a word or phrase")
-  return false;
-  }
+    var str = $("input#str").val();
+    var result = translate(str);
+    if (result) {
+    $(".return").text(result);
+    }
+    console.log(str);
   });
 });
